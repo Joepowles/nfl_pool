@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Pool | Next Level Win</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Next Level Win - Create Pool</h1>
+    </header>
+    <main>
+        <form action="../scripts/create_pool.php" method="post">
+            <label for="pool_name">Pool Name:</label>
+            <input type="text" id="pool_name" name="pool_name" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <button type="submit">Create Pool</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2023 NFL Confidence Pool</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
