@@ -4,17 +4,32 @@ $(document).ready(function() {
 
     if (poolId) {
         $.get(`../scripts/get_pool_details.php?pool_id=${poolId}`, function(data) {
+            console.log("Data received:", data); // Debugging line
             if (data.error) {
                 $('#pool-details').html(`<p>Error: ${data.error}</p>`);
             } else {
-                $('#pool-details').html(`
-                    <h2>${data.pool_name}</h2>
-                    <p>${data.description}</p>
-                    <p>Status: ${data.active ? 'Active' : 'Archived'}</p>
-                `);
+                // Log each field to check their existence and values
+                console.log("pool_name exists:", data.pool_name !== undefined && data.pool_name !== null);
+                console.log("description exists:", data.description !== undefined && data.description !== null);
+                console.log("active exists:", data.active !== undefined && data.active !== null);
+
+                // Check if all data fields are present and not null
+                if(data.pool_name && data.description && data.active != null) {
+                    var isActive = Boolean(data.active); // Converts `1` to `true` and `0` to `false`
+                    $('#pool-details').html(`
+                        <h2>${data.pool_name}</h2>
+                        <p>${data.description}</p>
+                        <p>Status: ${isActive ? 'Active' : 'Archived'}</p>
+                    `);
+                } else {
+                    console.log("Missing data fields:", data);
+                    $('#pool-details').html('<p>Missing data in response.</p>');
+                }
             }
-        }).fail(function() {
-            $('#pool-details').html('<p>Error loading pool details.</p>');
+        }, "json") // Ensure jQuery treats the response as JSON
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            console.log("AJAX call failed: ", textStatus, errorThrown); // Debugging line
+            $('#pool-details').html(`<p>Error loading pool details. Status: ${textStatus}, Error: ${errorThrown}</p>`);
         });
     } else {
         $('#pool-details').html('<p>No pool selected.</p>');

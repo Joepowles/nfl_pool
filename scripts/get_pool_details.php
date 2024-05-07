@@ -16,6 +16,7 @@ if (isset($_GET['pool_id'])) {
     if ($result->num_rows > 0) {
         $pool_details = $result->fetch_assoc();
         echo json_encode($pool_details);
+        $_SESSION['pool_id'] = $pool_id;
     } else {
         echo json_encode(['error' => 'No pool found with the given ID']);
     }

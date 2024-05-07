@@ -13,9 +13,10 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $pools = [];
 
-// Prepare SQL to fetch pools that the user is a member of
-$query = "SELECT p.pool_id, p.pool_name, p.description, p.active FROM pools p 
+// Prepare SQL to fetch pools that the user is a member of and check if they can create new pools
+$query = "SELECT p.pool_id, p.pool_name, p.description, p.active, u.canCreate FROM pools p 
           INNER JOIN pool_memberships pm ON p.pool_id = pm.pool_id 
+          INNER JOIN users u ON pm.user_id = u.user_id
           WHERE pm.user_id = ?";
 
 $stmt = $conn->prepare($query);
@@ -29,7 +30,8 @@ while ($row = $result->fetch_assoc()) {
         'pool_id' => $row['pool_id'],
         'pool_name' => $row['pool_name'],
         'description' => $row['description'],
-        'active' => $row['active']
+        'active' => $row['active'],
+        'canCreate' => $row['canCreate']
     ];
 }
 
@@ -37,7 +39,5 @@ $stmt->close();
 
 // Return the pools as JSON
 echo json_encode($pools);
-
-
 
 ?>
