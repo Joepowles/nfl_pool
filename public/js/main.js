@@ -3,8 +3,8 @@ $(document).ready(function() {
     $.get('../scripts/check_login.php', function(response) { 
         console.log(response);
         var navbar = $('.navbar ul');
-        if (response.isLoggedIn) {
-            navbar.html(`               // Logged in user navbar
+        if (response.isLoggedIn) {          // Logged in user navbar
+            navbar.html(`     
                 <li class="navbar-left">Pools</li>
                 <li class="navbar-left">Rules</li>
                 <div class="auth-links">
@@ -12,8 +12,8 @@ $(document).ready(function() {
                     <li class="navbar-right"><a href="dashboard.html">${response.username}</a></li>
                 </div>
             `);
-        } else {
-            navbar.html(`               // Logged out user navbar
+        } else {                            // Logged out user navbar
+            navbar.html(`              
                 <li class="navbar-left"><a href="index.html">Home</a></li>
                 <div class="auth-links">
                     <li class="navbar-right"><a href="register.html" aria-label="Register for NFL Confidence Pool">Register</a></li>

@@ -2,16 +2,16 @@
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding-top: 50px; /* Adjust this value based on the height of your navbar */
+    padding-top: 35px; /* Adjust this value based on the height of your navbar */
     background: #f4f4f4;
     color: #333;
 }
 
 /* Header and Navigation Styles */
 header {
-    background-color: #0056b3;
+    background-color: #038;
     color: white;
-    padding: 10px 20px;
+    padding: 1px 20px;
     text-align: center;
 }
 
@@ -21,7 +21,7 @@ header {
     padding: 0;
     display: flex; /* Use flexbox for the navbar */
     align-items: center; /* Align items vertically */
-    background-color: #333;
+    background-color: #006;
 }
 
 .navbar li {
@@ -50,7 +50,7 @@ header {
 }
 
 .navbar li a:hover {
-    background-color: #111;
+    background-color: rgb(0, 0, 66);
 }
 
 /* Main Content Styles */
@@ -64,7 +64,7 @@ main {
 
 /* Footer Styles */
 footer {
-    background-color: #333;
+    background-color: #006;
     color: white;
     text-align: center;
     padding: 10px 20px;
@@ -94,10 +94,19 @@ footer {
 body {
     margin: 0;
     padding: 0;
-    padding-top: 50px; /* Adjust this value based on the height of your navbar */
+    padding-top: 34px; /* Adjust this value based on the height of your navbar */
 }
 
 /* Example assuming the username link has a class 'username-link' */
 .navbar .username-link {
     padding-right: 20px; /* Adjust the padding as needed */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label, form input, form button {
+    margin-bottom: 10px; /* Adjust the spacing as needed */
 }
