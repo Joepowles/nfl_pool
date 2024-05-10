@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2024 at 08:08 PM
+-- Generation Time: May 10, 2024 at 08:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `games` (
   `game_id` int(11) NOT NULL,
   `espn_id` varchar(64) NOT NULL,
+  `year` int(11) NOT NULL,
   `week` int(11) NOT NULL,
   `home_team` varchar(255) NOT NULL,
   `away_team` varchar(255) NOT NULL,
