@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Picks</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Next Level Win</h1>
+        <nav class="navbar">
+            <ul>
+               <!-- Navbar content will be dynamically filled by main.js -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Submit Your Picks</h2>
+        <form action="scripts/submit.php" method="post">
+            <input type="hidden" name="pool_id" value="">
+            <!-- Add form fields for submitting picks here -->
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+    <footer>
+        <p><!-- footer content will be dynamically filled by main.js --></p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.querySelector('input[name="pool_id"]').value = new URLSearchParams(window.location.search).get('pool_id');
+    </script>
+</body>
+</html>
+

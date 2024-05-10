@@ -1,6 +1,7 @@
 $(document).ready(function() {
     // Fetch login status first
     $.get('../scripts/check_login.php', function(response) {
+        console.log("Login response: ", response);
         // Now response contains the login status
         if (response.isLoggedIn) {
             // Fetch user pools if logged in
@@ -32,6 +33,11 @@ $(document).ready(function() {
                 }
 
                 poolListContainer.html(activePoolsHtml + archivedPoolsHtml);
+
+                // Check if user can create new pools
+                if (response.canCreate === 1) {
+                    poolListContainer.append('<a href="create_pool.html" class="create-pool-link">Create New Pool</a>');
+                }
             }).fail(function() {
                 $('#pool-list-container').html('<p>Error loading pools.</p>');
             });
